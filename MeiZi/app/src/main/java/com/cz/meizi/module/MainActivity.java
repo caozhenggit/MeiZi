@@ -1,7 +1,9 @@
-package com.cz.meizi;
+package com.cz.meizi.module;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.cz.meizi.R;
 
 /**
  * @author caozheng
