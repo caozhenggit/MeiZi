@@ -1,5 +1,6 @@
 package com.cz.meizi.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,21 +14,28 @@ import com.caozheng.xfastmvp.mvp.BasePresenter;
  * describe:
  */
 public abstract class AppFragment<P extends BasePresenter> extends BaseFragment {
-    protected P mvpPresenter;
+    protected P mPresenter;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mvpPresenter = createPresenter();
+        mPresenter = createPresenter();
+
+        doBusiness();
     }
 
     protected abstract P createPresenter();
 
+    /**
+     * 业务操作
+     */
+    public abstract void doBusiness();
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mvpPresenter != null) {
-            mvpPresenter.detachView();
+        if (mPresenter != null) {
+            mPresenter.detachView();
         }
     }
 }

@@ -12,6 +12,8 @@ import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 
 import com.caozheng.xfastmvp.XFastConf;
+
+import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
@@ -33,8 +35,11 @@ public abstract class BaseFragment extends Fragment {
         mActivity = getActivity();
 
         mContextView = inflater.inflate(bindLayout(), container, false);
+
+        ButterKnife.bind(this, mContextView);
+
         initView(mContextView);
-        doBusiness(getActivity());
+
         return mContextView;
     }
 
@@ -54,13 +59,6 @@ public abstract class BaseFragment extends Fragment {
      * @param view
      */
     public abstract void initView(final View view);
-
-    /**
-     * 业务操作
-     *
-     * @param mContext
-     */
-    public abstract void doBusiness(Context mContext);
 
     @SuppressWarnings("unchecked")
     public <T extends View> T $(View view, int resId) {

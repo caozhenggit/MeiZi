@@ -34,9 +34,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     private SweetAlertDialog pDialog;
 
     /** 是否沉浸状态栏 **/
-    private boolean isSetStatusBar = true;
+    private boolean isSetStatusBar = false;
     /** 是否允许全屏 **/
-    private boolean mAllowFullScreen = true;
+    private boolean mAllowFullScreen = false;
     /** 是否禁止旋转屏幕 **/
     private boolean isAllowScreenRotate = false;
     /** 当前Activity渲染的视图View **/
