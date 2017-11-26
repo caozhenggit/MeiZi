@@ -49,8 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         $Log(TAG + "-->onCreate()");
         try {
-            Bundle bundle = getIntent().getExtras();
-            initParams(bundle);
+            initParams(getIntent());
 
             mContextView = LayoutInflater.from(this)
                     .inflate(bindLayout(), null);
@@ -101,11 +100,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 初始化Bundle参数
+     * 初始化Intent参数
      *
-     * @param parms
+     * @param intent
      */
-    public abstract void initParams(Bundle parms);
+    public abstract void initParams(Intent intent);
 
     /**
      * 绑定布局
