@@ -2,12 +2,12 @@ package com.cz.meizi.module;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.cz.meizi.adapter.MainPagerAdapter;
 import com.cz.meizi.R;
@@ -15,6 +15,8 @@ import com.cz.meizi.base.BaseAppActivity;
 import com.cz.meizi.module.fragment.GifFragment;
 import com.cz.meizi.module.fragment.ImageFragment;
 import com.cz.meizi.module.fragment.VideoFragment;
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +34,6 @@ public class MainActivity extends BaseAppActivity {
     ImageView imvMenu;
     @BindView(R.id.imv_about)
     ImageView imvAbout;
-    @BindView(R.id.imv_image)
-    ImageView imvImage;
-    @BindView(R.id.imv_video)
-    ImageView imvVideo;
-    @BindView(R.id.imv_gif)
-    ImageView imvGif;
     @BindView(R.id.viewpager)
     ViewPager viewpager;
 
@@ -55,14 +51,14 @@ public class MainActivity extends BaseAppActivity {
 
     @Override
     public void initView(View view) {
+        init();
+
         itemList.add(new ImageFragment());
         itemList.add(new VideoFragment());
         itemList.add(new GifFragment());
 
         FragmentManager mFragmentManager = getSupportFragmentManager();
         viewpager.setAdapter(new MainPagerAdapter(mFragmentManager, itemList));
-
-        viewPagerPageChangeListener();
     }
 
     @Override
@@ -70,7 +66,7 @@ public class MainActivity extends BaseAppActivity {
 
     }
 
-    @OnClick({R.id.imv_menu, R.id.imv_about, R.id.imv_image, R.id.imv_video, R.id.imv_gif})
+    @OnClick({R.id.imv_menu, R.id.imv_about})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imv_menu:
@@ -79,68 +75,52 @@ public class MainActivity extends BaseAppActivity {
             case R.id.imv_about:
                 break;
 
-            case R.id.imv_image:
-                setSelectItem(0);
-                viewpager.setCurrentItem(0);
-                break;
-
-            case R.id.imv_video:
-                setSelectItem(1);
-                viewpager.setCurrentItem(1);
-                break;
-
-            case R.id.imv_gif:
-                setSelectItem(2);
-                viewpager.setCurrentItem(2);
-                break;
-
             default:
                 break;
         }
     }
 
-    private void viewPagerPageChangeListener(){
-        viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    private void init(){
+        final FloatingActionsMenu menuMultipleActions = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
 
+        FloatingActionButton actionA = (FloatingActionButton) findViewById(R.id.action_a);
+        actionA.setIcon(R.mipmap.icon_image);
+        actionA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mActivity, "click A", Toast.LENGTH_SHORT).show();
+                menuMultipleActions.toggle();
             }
+        });
 
+        FloatingActionButton actionB = (FloatingActionButton) findViewById(R.id.action_b);
+        actionB.setIcon(R.mipmap.icon_image);
+        actionB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPageSelected(int position) {
-                setSelectItem(position);
+            public void onClick(View view) {
+                Toast.makeText(mActivity, "click B", Toast.LENGTH_SHORT).show();
+                menuMultipleActions.toggle();
             }
+        });
 
+        FloatingActionButton actionC = (FloatingActionButton) findViewById(R.id.action_c);
+        actionC.setIcon(R.mipmap.icon_image);
+        actionC.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPageScrollStateChanged(int state) {
+            public void onClick(View view) {
+                Toast.makeText(mActivity, "click C", Toast.LENGTH_SHORT).show();
+                menuMultipleActions.toggle();
+            }
+        });
 
+        FloatingActionButton actionD = (FloatingActionButton) findViewById(R.id.action_d);
+        actionD.setIcon(R.mipmap.icon_menu);
+        actionD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                menuMultipleActions.toggle();
             }
         });
     }
 
-    private void setSelectItem(int position){
-        switch (position){
-            case 0:
-                imvImage.setImageResource(R.mipmap.icon_image);
-                imvVideo.setImageResource(R.mipmap.icon_video_normal);
-                imvGif.setImageResource(R.mipmap.icon_gif_normal);
-                break;
-
-            case 1:
-                imvImage.setImageResource(R.mipmap.icon_image_normal);
-                imvVideo.setImageResource(R.mipmap.icon_video);
-                imvGif.setImageResource(R.mipmap.icon_gif_normal);
-                break;
-
-            case 2:
-                imvImage.setImageResource(R.mipmap.icon_image_normal);
-                imvVideo.setImageResource(R.mipmap.icon_video_normal);
-                imvGif.setImageResource(R.mipmap.icon_gif);
-                break;
-
-            default:
-                $Log("no exist item:" + position);
-                break;
-        }
-    }
 }
