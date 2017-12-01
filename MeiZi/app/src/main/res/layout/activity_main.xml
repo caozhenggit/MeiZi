@@ -61,24 +61,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     fab:fab_title="Tab A"
-                    fab:fab_colorNormal="@color/white"
-                    fab:fab_colorPressed="@color/white_pressed"/>
+                    fab:fab_colorNormal="@color/blue"
+                    fab:fab_colorPressed="@color/blue_pressed"/>
 
                 <com.getbase.floatingactionbutton.FloatingActionButton
                     android:id="@+id/action_b"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     fab:fab_title="Tab B"
-                    fab:fab_colorNormal="@color/white"
-                    fab:fab_colorPressed="@color/white_pressed"/>
+                    fab:fab_colorNormal="@color/grey"
+                    fab:fab_colorPressed="@color/grey_pressed"/>
 
                 <com.getbase.floatingactionbutton.FloatingActionButton
                     android:id="@+id/action_c"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     fab:fab_title="Tab C"
-                    fab:fab_colorNormal="@color/white"
-                    fab:fab_colorPressed="@color/white_pressed"/>
+                    fab:fab_colorNormal="@color/orange"
+                    fab:fab_colorPressed="@color/orange_pressed"/>
 
             </com.getbase.floatingactionbutton.FloatingActionsMenu>
         </RelativeLayout>
@@ -92,7 +92,9 @@
                 android:id="@+id/action_d"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"/>
+                android:layout_margin="15dp"
+                fab:fab_colorNormal="@color/red"
+                fab:fab_colorPressed="@color/red_pressed"/>
         </RelativeLayout>
     </FrameLayout>
 

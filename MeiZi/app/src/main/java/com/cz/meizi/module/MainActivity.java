@@ -51,7 +51,7 @@ public class MainActivity extends BaseAppActivity {
 
     @Override
     public void initView(View view) {
-        init();
+        initFloatingActionsMenu();
 
         itemList.add(new ImageFragment());
         itemList.add(new VideoFragment());
@@ -80,7 +80,7 @@ public class MainActivity extends BaseAppActivity {
         }
     }
 
-    private void init(){
+    private void initFloatingActionsMenu(){
         final FloatingActionsMenu menuMultipleActions = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
 
         FloatingActionButton actionA = (FloatingActionButton) findViewById(R.id.action_a);

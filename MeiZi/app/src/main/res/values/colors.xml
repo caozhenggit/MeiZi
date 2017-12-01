@@ -11,5 +11,15 @@
 
     <color name="white">#f1f1f1</color>
     <color name="white_pressed">#f1f1f1</color>
+    <color name="orange">#FF9800</color>
+    <color name="orange_pressed">#F57C00</color>
+    <color name="red">#FF5722</color>
+    <color name="red_pressed">#E64A19</color>
+    <color name="grey">#607D8B</color>
+    <color name="grey_pressed">#455A64</color>
+    <color name="blue">#03A9F4</color>
+    <color name="blue_pressed">#0288D1</color>
+
+
     <color name="half_black">#808080</color>
 </resources>
